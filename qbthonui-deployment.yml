@@ -1,0 +1,26 @@
+apiVersion: apps/v1  
+kind: Deployment  
+metadata:  
+  name: qbthon-ui-deployment  
+  labels:  
+    apps: qbthon-ui-deployment  
+spec:  
+  replicas: 1  
+  minReadySeconds: 15  
+  strategy:  
+    type: Recreate  
+  selector:  
+    matchLabels:  
+      app: qbthon-ui  
+  template:  
+    metadata:  
+      labels:  
+        app: qbthon-ui  
+    spec:  
+      containers:  
+         - name: qbthon-ui 
+           image: 895164885144.dkr.ecr.us-east-2.amazonaws.com/qbthonspartanui:TAG_ID
+           imagePullPolicy: IfNotPresent  
+           ports:  
+             - containerPort: 4200
+         
